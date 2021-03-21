@@ -1,0 +1,61 @@
+---
+title: "Chapter 3"
+author: "Johanna Copeland"
+date: "3/17/2021"
+output: pdf_document
+---
+1) Describe the null hypotheses to which the p-values given in Table 3.4 correspond. Explain what conclusions you can draw based on these p-values. Your explanation should be phrased in terms of sales, TV, radio, and newspaper, rather than in terms of the coefficients of the linear model.
+
+ANS: The null hypothesis for the p-values are for t-tests. H0: betak = 0. Meaning is it (the covariate) not statistically significantly associated with sales
+The p-values are small for TV and radio, therefore we reject the null hypothesis and conclude there is enough evidence to show TV and Radio advertising budgets are statistically significantly associated with sales. 
+
+2) Carefully explain the differences between the KNN classifier and KNN regression methods.
+
+ANS:  the classifier identifies the category to which the point should be placed. KNN regression outputs a quantitative. 
+
+8) This question involves the use of simple linear regression on the Auto
+data set.
+(a) Use the lm() function to perform a simple linear regression with
+mpg as the response and horsepower as the predictor. Use the
+summary() function to print the results. Comment on the output.
+
+```{r}
+library(MASS)
+Auto <- mtcars
+lm <- lm(mpg ~ hp, data = Auto)
+summary(lm)
+```
+
+(i). Is there a relationship between the predictor and the response?
+ANS: the p-value is smaller than 0.05 which indicates there is enough evidence to show a statistically significant relationship between mpg and horsepower
+(ii) How strong is the relationship between the predictor and
+the response?
+ANS: the adjusted R-squared is about 0.5892 which indicates that the variability in the model for mpg can be explain by horsepower 58.92% of the time. The RSE is 20.92% error. 
+(iii)  Is the relationship between the predictor and the response
+positive or negative?
+ANS: negative based on the estimate coefficent in lm summary function
+(iv) What is the predicted mpg associated with a horsepower of 98? What are the associated 95 % confidence and prediction intervals?
+```{r}
+(ans <- 30.09886 -0.06823 * 98)
+
+predict(lm, data.frame(hp=98), interval="confidence")
+predict(lm, data.frame(hp=98), interval="prediction")
+
+```
+
+b) Plot the response and the predictor. Use the abline() function to display the least squares regression line
+```{r}
+plot(mpg~hp, data = mtcars)
+abline(lm)
+```
+c) Use the plot() function to produce diagnostic plots of the least
+squares regression fit. Comment on any problems you see with
+the fit.
+```{r}
+par(mfrow=c(2,2))
+plot(lm)
+```
+Non-linearity is apparent in the residual plots
+
+
+13) 

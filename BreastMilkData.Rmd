@@ -1,0 +1,17 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+Download minfi package
+```{r}
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+
+BiocManager::install("minfi")
+```
+```{r}
+library(minfi)
+```
+
+
+
